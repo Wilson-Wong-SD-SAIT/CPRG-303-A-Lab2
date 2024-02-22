@@ -10,16 +10,16 @@ import ToDoList from './component/ToDoList';
 import ToDoForm from './component/ToDoForm';
 
 function App() {
-  const [todolists, setTodolists] = useState(["Do laundry", "Go to gym", "Walk dog"]);
+  const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
   const addToDo = (newItem) => {
-    let newToDoList = todolists.slice();
+    let newToDoList = tasks.slice();
     newToDoList.push(newItem);
-    setTodolists(newToDoList);
+    setTasks(newToDoList);
   }
 
   return (
     <SafeAreaView>
-      <ToDoList inputs={todolists} />
+      <ToDoList tasks={todotaskslists} />
       <ToDoForm addToDo={addToDo} />
     </SafeAreaView>
   );

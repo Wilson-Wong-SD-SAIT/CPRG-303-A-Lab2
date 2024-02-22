@@ -7,12 +7,10 @@ import {
     ScrollView,
   } from 'react-native';
 
-const ToDoList = (props) => {
-    const {inputs} = props;
-
+const ToDoList = ({tasks}) => {
     return (
         <ScrollView>
-            {inputs.map(input => 
+            {tasks.map(input => 
                 <Pressable>
                   <View style={[styles.task, styles.completed]}>
                       <Text style={styles.taskText}>{input}</Text>
