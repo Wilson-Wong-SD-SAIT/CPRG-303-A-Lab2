@@ -5,22 +5,25 @@
  */
 
 import React, {useState} from 'react';
-import { SafeAreaView} from 'react-native';
+import { Alert, SafeAreaView} from 'react-native';
 import ToDoList from './component/ToDoList';
 import ToDoForm from './component/ToDoForm';
 
 function App() {
   const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-  const addToDo = (newItem) => {
-    let newToDoList = tasks.slice();
-    newToDoList.push(newItem);
-    setTasks(newToDoList);
+  const addTask  = (taskText) => {
+    if ( !tasks.includes(taskText) ){
+      setTasks([...tasks, taskText]);
+    }
+    else {
+      window.alert("Duplicate task!");
+    }
   }
 
   return (
     <SafeAreaView>
-      <ToDoList tasks={todotaskslists} />
-      <ToDoForm addToDo={addToDo} />
+      <ToDoList tasks={tasks} />
+      <ToDoForm addTask={addTask } />
     </SafeAreaView>
   );
 }
