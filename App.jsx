@@ -4,27 +4,23 @@
  * @format
  */
 
-import React, {useState} from 'react';
-import { Alert, SafeAreaView} from 'react-native';
-import ToDoList from './component/ToDoList';
-import ToDoForm from './component/ToDoForm';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator  } from '@react-navigation/native-stack';
+
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
 
 function App() {
-  const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-  const addTask  = (taskText) => {
-    if ( !tasks.includes(taskText) ){
-      setTasks([...tasks, taskText]);
-    }
-    else {
-      window.alert("Duplicate task!");
-    }
-  }
+  const Stack = createNativeStackNavigator ();
 
   return (
-    <SafeAreaView>
-      <ToDoList tasks={tasks} />
-      <ToDoForm addTask={addTask } />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
